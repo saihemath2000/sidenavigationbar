@@ -12,10 +12,11 @@
       integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
       crossorigin="anonymous"
     />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="styles.css" />
     <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
     <style>
-      .menu-nav {
+      /* .menu-nav {
        display: flex;
        justify-content: space-between;
      }
@@ -48,23 +49,14 @@
         z-index: 100;
         max-height: 100vh;
         transition: opacity 0.2s;z-index:0.2s;max-height: 0.2s;
-      }
+      } */
     </style>
   </head>
   <body>
     <div class="wrapper">
-      <div class="sidebar" style="font-size: 20px;width:300px; min-height: 20px;overflow:scroll;overflow-x: hidden;max-height:100vh;">
+      <div class="sidebar" style="font-size: 22px;width:300px; min-height: 20px;overflow:scroll;overflow-x: hidden;max-height:100vh;">
       <?php  if (isset($_SESSION['user'])) : ?>
 					<h1 style="color:white;font-size:28px;margin-left:10px;"><?php echo $_SESSION['user']['name']; ?></h1>
-          <div class="menu-nav">
-              <div class="dropdown-container" tabindex="-1">
-                <div class="three-dots">
-                <div class="dropdown">
-                  <a href="../registration/signup_and_signin_folder/logout.php" style="color:green;text-decoration:none;"><div>Logout</div></a>
-                </div>
-                </div>
-              </div>
-          </div>
       <?php endif ?></br>
         <ul>
           <h3 style="margin-left: 10px; color: white">Instructor</h3>
@@ -207,6 +199,9 @@
           </li>
           <li>
             <a href="#"><i class="fas fa-address-book"></i>Contact</a>
+          </li>
+          <li>
+            <a href="#"><svg xmlns="http://www.w3.org/2000/svg" fill="white" style="width:28px;height:23px;color:white;" viewBox="0 0 16 16"><g class="icon-color"><path d="M10 13v1H3V2h7v1h1V1.5a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v13a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5V13h-1z"/><path d="M9.983 5.041a.5.5 0 0 1 .812-.39l3.7 2.96a.5.5 0 0 1 0 .78l-3.7 2.96a.5.5 0 0 1-.812-.39V9H7V7h2.983V5.041z"/></g></svg>Logout</a>
           </li>
           <li>
             <a>

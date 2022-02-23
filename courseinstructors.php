@@ -1,5 +1,12 @@
+<?php 
+  include('../registration/functions.php');
+?>
 <?php
+ob_start();
+echo $_SESSION['user']['name'];
+$instructor = ob_get_clean(); 
 $db = mysqli_connect("localhost", "root", "", "course_info");
+$instructor=  $_SESSION['user']['name']; 
 if (!$db) {
     die("Connection failed: " . mysqli_connect_error());
 } else {
@@ -21,8 +28,8 @@ if (!$db) {
         $sql = mysqli_query($db,"SELECT MAX(id) AS max FROM `courseinstructors`;");
         $res = mysqli_fetch_array($sql);
         $i = $res['max']+1;
-        $sql1 = "INSERT INTO courseinstructors (id,title,category,start_date,end_date,price,description,image)
-          VALUES ('$i','$title','$category','$startdate','$enddate','$price','$description','$imagename')";
+        $sql1 = "INSERT INTO courseinstructors (id,instructor,title,category,start_date,end_date,price,description,image)
+          VALUES ('$i','$instructor','$title','$category','$startdate','$enddate','$price','$description','$imagename')";
         $sql3 = mysqli_query($db,"SELECT MAX(id) AS max FROM `module`;");  
         $res1=mysqli_fetch_array($sql3);
         $r=$res1['max']+1;      
