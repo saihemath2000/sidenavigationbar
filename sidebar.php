@@ -117,7 +117,7 @@
             <a href="coursetab.html" target="iframe_a"><i class="fas fa-plus"></i>Create course</a>
           </li>
           <li>
-            <a href="../registration/admin/coursenames.php" target="iframe_a">
+            <a href="./mycourses.php" target="iframe_a">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 version="1.1"

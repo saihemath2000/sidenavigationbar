@@ -49,7 +49,7 @@ if (isset($_POST['submittopic'])) {
                 header('location:modulesdisplay.php?course='.$res1[1].'');
             }
         }
-        header('location:modulesdisplay.php?course='.$res1[1].'');
+        // header('location:modulesdisplay.php?course='.$res1[1].'');
     } else {
         while ($r <= 2) {
             if ($r == 1) {
@@ -79,6 +79,6 @@ if (isset($_POST['submittopic'])) {
                 }
             }
         }
-        header('location:modulesdisplay.php?course='.$res1[1].'');
+        // header('location:modulesdisplay.php?course='.$res1[1].'');
     }
 }

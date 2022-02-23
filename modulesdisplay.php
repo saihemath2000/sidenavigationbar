@@ -41,7 +41,7 @@
         if(mysqli_num_rows($res)>0){
             echo '<div class="row"><div class="col-6"><h3 style="margin-left:10px;">Modules</h3></div><div class="col-6"><h3 style="margin-left:60px;">Add topic</h3></div></div></br>'; 
             while($row = mysqli_fetch_assoc($res)){
-              echo '<li id='."$module.$m".' class="list-group-item" style="font-size:20px;height:150px;width:300px;margin-left:10px;">'.$row["title"].'<a href="./topiccreation.php?coursename='.$row['coursename'].'&module='.$row['title'].'" id='."$anchor.$m".' style="margin-left:300px;"
+              echo '<li id='."$module$m".' class="list-group-item" style="font-size:20px;height:150px;width:300px;margin-left:10px;">'.$row["title"].'<a href="./topiccreation.php?coursename='.$row['coursename'].'&module='.$row['title'].'" id='."$anchor.$m".' style="margin-left:300px;"
               ><svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="40"
