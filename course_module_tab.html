@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+      integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+      crossorigin="anonymous"
+    />
+    <style>
+      body {
+        font-size: 20px;
+      }
+      #sectionid {
+        cursor: pointer;
+      }
+      .hide {
+        display: none;
+      }
+      #topicsymbol:hover + .hide {
+        display: block;
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item">
+          <a
+            class="nav-link active"
+            id="home-tab"
+            data-toggle="tab"
+            href="#create"
+            role="tab"
+            aria-controls="Course"
+            aria-selected="true"
+            >Course</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            id="profile-tab"
+            data-toggle="tab"
+            href="#modulemove"
+            role="tab"
+            aria-controls="Module"
+            aria-selected="false"
+            >Module</a
+          >
+        </li>
+      </ul>
+      <div class="tab-content" id="myTabContent">
+        <div
+          class="tab-pane fade show active"
+          id="create"
+          role="tabpanel"
+          aria-labelledby="home-tab"
+        >
+          <form style="margin-top: 10px; margin-left: 10px" method="POST" enctype='multipart/form-data' action='./courseinstructors.php'>
+            <div class="form-group col-md-6">
+              <label for="course">Course title</label>
+              <input
+                type="text"
+                class="form-control"
+                id="course1"
+                placeholder="Enter title"
+                name="coursetitle"
+              />
+            </div>
+            <div class="form-group col-md-6">
+              <label for="exampleFormControlSelect1">Select category</label>
+              <select class="form-control" id="exampleFormControlSelect1" name="category">
+                <option>Choose category</option>
+                <option>Computer science</option>
+                <option>General</option>
+              </select>
+            </div>
+            <div class="form-group col-md-6">
+              <label for="course">Mention Schedule</label>
+              <input
+                type="text"
+                class="form-control"
+                id="startdate"
+                name="startdate"
+                placeholder="enter start date"
+              />
+            </br>
+              <input
+                type="text"
+                class="form-control"
+                id="enddate"
+                name="enddate"
+                placeholder="enter end date"
+              />
+            </div>
+            <div class="form-group col-md-6">
+              <label for="course">Enter price(</label>
+              <small>in rupees)</small>
+              <input
+                type="number"
+                step="any"
+                class="form-control"
+                id="price"
+                name="price"
+                placeholder="price in rupees"
+              />
+            </div>
+            <div class="form-group col-md-6">
+              <label for="exampleFormControlTextarea1">Description</label>
+              <textarea
+                class="form-control"
+                id="exampleFormControlTextarea1"
+                rows="5"
+                name="description"
+              ></textarea>
+            </div>
+            <div class="form-group col-md-6">
+              <label for="exampleFormControlFile1">Image for course</label>
+              <input
+                type="file"
+                class="form-control-file"
+                id="exampleFormControlFile1"
+                name="courseimage"
+              />
+            </div>
+            <button
+              type="submit"
+              style="margin-left: 12px"
+              class="btn btn-primary"
+              name="submitforcourse"
+            >
+              Submit
+            </button>
+          </form>
+        </div>
+        <div
+          class="tab-pane fade"
+          id="modulemove"
+          role="tabpanel"
+          aria-labelledby="profile-tab"
+        >
+          <div class="row">
+            <div class="col-4">
+              <a href="#" style="float: right"
+                ><svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="40"
+                  height="40"
+                  fill="currentColor"
+                  class="bi bi-plus"
+                  viewBox="0 0 16 16"
+                  id="sectionid"
+                >
+                  <path
+                    d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"
+                  /></svg
+              ></a>
+            </div>
+            <div class="col-8"><h4 style="float: left">Add module</h4></div>
+          </div>
+          <div class="appending_div"></div>
+        </div>
+      </div>
+    </div>
+    <div class="hide">Add topic</div>
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      $(document).ready(function () {
+        var i = 1;
+        $("#sectionid").on("click", function () {
+          var field =
+            '<br><div class="form-group col-md-6"><div class="row"><div class="col"><form method="POST" action="./moduledb.php"><label for="course">Module' +
+            i +
+            '</label><input type="text" name="section" class="form-control" placeholder="enter module"></br><button type="submit" name="save" class="btn btn-success col-md-4">Save</button></form></div><div class="col"><a href="topiccreation.html" id="topicsymbol"><svg xmlns="http://www.w3.org/2000/svg"  width="40" height="40" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16"><path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/></svg></a></div></div>';
+          $(".appending_div").append(field);
+          i = i + 1;
+        });
+      });
+    </script>
+
+  </body>
+</html>
