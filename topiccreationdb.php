@@ -49,13 +49,13 @@ if (isset($_POST['submittopic'])) {
                 header('location:modulesdisplay.php?course='.$res1[1].'');
             }
         }
-        // header('location:modulesdisplay.php?course='.$res1[1].'');
+         header('location:modulesdisplay.php?course='.$res1[1].'');
     } else {
         while ($r <= 2) {
             if ($r == 1) {
                 $r = $r + 1;
                 $m = $_FILES['file']['name'][0];
-                $sql3 = "UPDATE topic set title='$topic',video='$topicvideo',document='$m' where id='$res1[0]'";
+                $sql3 = "UPDATE topic set title='$topic',video='$topicvideo',document='$m' where coursename='$course' and sectionname='$module'";
                 if (!(mysqli_query($db, $sql3))) {
                     echo "Error: " . $sql3 . "<br>" . mysqli_error($db);
                 }
@@ -79,7 +79,7 @@ if (isset($_POST['submittopic'])) {
                 }
             }
         }
-        // header('location:modulesdisplay.php?course='.$res1[1].'');
+         header('location:modulesdisplay.php?course='.$res1[1].'');
     }
 }
 else{

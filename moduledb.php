@@ -40,22 +40,25 @@ if (!$db) {
                     echo "Error: " . $sql7 . "<br>" . mysqli_error($db);
                 }
             }
-            //header('location:modulesdisplay.php?course='.$res1[1].'');
+            header('location:modulesdisplay.php?course='.$res1[1].'');
         } else {
             $i = $res1[0];
             foreach ($modules as $x => $y) {
-                $sql8 = mysqli_query($db, "SELECT MAX(id) AS maxtopic FROM `topic`;");
+                $sql8 = mysqli_query($db, "SELECT MAX(id) AS maxtopic FROM `topic` ");
                 $res4 = mysqli_fetch_array($sql8);
                 if ($x == 1) {
+                    echo 'ho';
                     $h = $res4['maxtopic'];
+                    echo 'ho'.$y;
                     $sql4 = "UPDATE module SET title='$y' where id='$res1[0]'";
-                    $sql9 = "UPDATE topic SET sectionname='$y' where id='$h'";
+                    $sql9 = "UPDATE topic SET sectionname='$y' where coursename='$res1[1]' ";
                     if (!(mysqli_query($db, $sql4))) {
                         echo "Error: " . $sql4 . "<br>" . mysqli_error($db);
                     }
-                    if (!(mysqli_query($db, $sql9))) {
-                        echo "Error: " . $sql9 . "<br>" . mysqli_error($db);
+                    if ((mysqli_query($db, $sql9))) {
+                        echo 'hello';
                     }
+                    
                 } else {
                     $i = $i + 1;
                     $h = $res4['maxtopic'] + 1;
@@ -68,9 +71,10 @@ if (!$db) {
                     if (!(mysqli_query($db, $sql10))) {
                         echo "Error: " . $sql10 . "<br>" . mysqli_error($db);
                     }
+                    
                 }
             }
-            //header('location:modulesdisplay.php?course='.$res1[1].' ');
+            header('location:modulesdisplay.php?course='.$res1[1].' ');
         }
         mysqli_close($db);
     }

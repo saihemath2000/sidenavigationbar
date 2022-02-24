@@ -17,6 +17,7 @@ if (!$db) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mycourses</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="mycourses.css"/>
     <style>
         .card-text{
             /* display: inline-block; */
@@ -25,6 +26,9 @@ if (!$db) {
             overflow: hidden !important;
             text-overflow: ellipsis;
         }
+        .card-columns{
+            column-count:2;
+        }
     </style>
 </head>
 <body>
@@ -32,22 +36,24 @@ if (!$db) {
        <input type="text" class="form-control" id="search"  placeholder="search"></br>
     </div>
     <?php
-    $path='./courseimages/';
+$path = './courseimages/';
+$g = 0;
 $sql1 = "SELECT * from courseinstructors where instructor='$instructor'";
 if ($result = mysqli_query($db, $sql1)) {
     $rowcount = mysqli_num_rows($result);
-}
-else{
+} else {
     echo mysqli_error($db);
 }
 if (mysqli_num_rows($result) > 0) {
     // output data of each row
-    echo '<div class="card-group">';
+    echo '<div class="card-columns" style="height:400px;">';
     while ($row = mysqli_fetch_assoc($result)) {
-        echo '<div class="card" style="width: 25rem;height:20rem;">';
-        echo '<img class="card-img-top" src='.$path.$row['image'].' style="height:250px;width:250px;" alt="course image">';
-        echo '<div class="card-body" style="width:300px;"><h5 class="card-title">'.$row['title'].'</h5><p class="card-text">'.$row['description'].'</p>
-                <a href="#" class="btn btn-primary">Goto Course</a></div></div>';
+        $fortitle=$row['title'];
+        echo '<div class="card" style="width: 25rem;height:20rem;margin-left:10px;">';
+        echo '<img class="card-img-top" src=' . $path . $row['image'] . ' style="height:150px;width:150px;margin-top:5px;" alt="course image">';
+        echo '<div class="card-body" style="width:300px;"><h5 class="card-title">' . $row['title'] . '</h5><p class="card-text">' . $row['description'] . '</p>
+                <a href="courseinformation.php?course='.$fortitle.'" class="btn btn-primary">Goto Course</a></div></div>';
+        echo '&nbsp;';
     }
     echo '</div>';
 } else {
