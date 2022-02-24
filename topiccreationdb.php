@@ -82,3 +82,4 @@ if (isset($_POST['submittopic'])) {
         // header('location:modulesdisplay.php?course='.$res1[1].'');
     }
 }
+?>
