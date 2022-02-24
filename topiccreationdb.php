@@ -6,7 +6,7 @@ if (!$db) {
     die("Connection failed: " . mysqli_connect_error());
 }
 $sql1 = mysqli_query($db, "SELECT id,coursename,sectionname from topic where coursename='$course' and sectionname='$module'");
-$sql2 = mysqli_query($db, "SELECT title from topic where coursename='$course' and sectionname='$module';");
+$sql2 = mysqli_query($db, "SELECT title from topic where coursename='$course' and sectionname='$module'");
 if ($sql1) {
     $res1 = mysqli_fetch_row($sql1);
 } else {
@@ -81,5 +81,8 @@ if (isset($_POST['submittopic'])) {
         }
         // header('location:modulesdisplay.php?course='.$res1[1].'');
     }
+}
+else{
+    echo 'funck';
 }
 ?>

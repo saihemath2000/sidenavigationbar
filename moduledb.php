@@ -40,7 +40,7 @@ if (!$db) {
                     echo "Error: " . $sql7 . "<br>" . mysqli_error($db);
                 }
             }
-            header('location:modulesdisplay.php?course='.$res1[1].'');
+            //header('location:modulesdisplay.php?course='.$res1[1].'');
         } else {
             $i = $res1[0];
             foreach ($modules as $x => $y) {
@@ -70,7 +70,7 @@ if (!$db) {
                     }
                 }
             }
-            header('location:modulesdisplay.php?course='.$res1[1].' ');
+            //header('location:modulesdisplay.php?course='.$res1[1].' ');
         }
         mysqli_close($db);
     }
