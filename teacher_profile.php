@@ -1,5 +1,5 @@
 <?php
-include '../registration/functions.php';
+include '../teacherregistration/validation.php';
 ?>
 <?php
 $db = mysqli_connect("localhost", "root", "", "multi_login");
