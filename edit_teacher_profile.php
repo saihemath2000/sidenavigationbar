@@ -1,5 +1,5 @@
 <?php 
-    include('../registration/functions.php');
+    include '../teacherregistration/validation.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
