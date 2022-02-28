@@ -1,13 +1,13 @@
-<?php 
-    include('../registration/functions.php');
+<?php
+include '../registration/functions.php';
 ?>
 <?php
-        $db = mysqli_connect("localhost","root","","multi_login");
-        if(!$db){
-            die("Connection failed: " . mysqli_connect_error());
-        }
-  ?>
-  
+$db = mysqli_connect("localhost", "root", "", "multi_login");
+if (!$db) {
+    die("Connection failed: " . mysqli_connect_error());
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -28,20 +28,20 @@
     </style>
   </head>
   <body>
-    <?php 
-        $id = $_SESSION['user']['id'];
-        $result= mysqli_query($db, "SELECT `name`,`email`,`password`,`phoneno`,`Address`,`City`,`State`,`Zipcode`,`photo` FROM users where id='$id'" );
-        $result1 = mysqli_fetch_row($result);
-    ?> 
+    <?php
+$id = $_SESSION['user']['id'];
+$result = mysqli_query($db, "SELECT `name`,`email`,`password`,`phone`,`address`,`photo`,`degree`,`board`,`institute`,`yearofpassing`,`percentage`,`department`,`experience`,`skills`,`skilldocuments`,`video` FROM teachers where id='$id'");
+$result1 = mysqli_fetch_row($result);
+?>
     <section style="background-color: #eee">
       <div class="container py-5">
-        <h1>My details</h1></br>  
+        <h1>My details</h1></br>
         <div class="row">
           <div class="col-lg-4">
             <div class="card mb-4" style="height:294px;">
               <div class="card-body text-center">
                 <img
-                  src="<?php echo '../registration/images/'.$result1[8];?>"
+                  src="<?php echo '../teacherregistration/profilephotos/' . $result1[5]; ?>"
                   alt="avatar"
                   class="rounded-circle img-fluid"
                   style="width: 300px"
@@ -59,9 +59,9 @@
                     <p class="mb-0">Full Name</p>
                   </div>
                   <div class="col-sm-9">
-                    <?php  if (isset($_SESSION['user'])) : ?>
+                    <?php if (isset($_SESSION['user'])): ?>
                     <p class="text-muted mb-0"><?php echo $result1[0]; ?></p>
-                    <?php endif ?>
+                    <?php endif?>
                   </div>
                 </div>
                 <hr />
@@ -94,16 +94,7 @@
                 <hr/>
                 <div class="row">
                   <div class="col-sm-3">
-                    <p class="mb-0">City</p>
-                  </div>
-                  <div class="col-sm-9">
-                    <p class="text-muted mb-0"><?php echo $result1[5]; ?></p>
-                  </div>
-                </div>
-                <hr/>
-                <div class="row">
-                  <div class="col-sm-3">
-                    <p class="mb-0">State</p>
+                    <p class="mb-0">Degree</p>
                   </div>
                   <div class="col-sm-9">
                     <p class="text-muted mb-0"><?php echo $result1[6]; ?></p>
@@ -112,12 +103,67 @@
                 <hr/>
                 <div class="row">
                   <div class="col-sm-3">
-                    <p class="mb-0">Zip</p>
+                    <p class="mb-0">Board</p>
                   </div>
                   <div class="col-sm-9">
                     <p class="text-muted mb-0"><?php echo $result1[7]; ?></p>
                   </div>
                 </div>
+                <hr/>
+                <div class="row">
+                  <div class="col-sm-3">
+                    <p class="mb-0">Institute</p>
+                  </div>
+                  <div class="col-sm-9">
+                    <p class="text-muted mb-0"><?php echo $result1[8]; ?></p>
+                  </div>
+                </div>
+                <hr/>
+                <div class="row">
+                  <div class="col-sm-3">
+                    <p class="mb-0">Year of passing</p>
+                  </div>
+                  <div class="col-sm-9">
+                    <p class="text-muted mb-0"><?php echo $result1[9]; ?></p>
+                  </div>
+                </div>
+                <hr/>
+                <div class="row">
+                  <div class="col-sm-3">
+                    <p class="mb-0">Percentage</p>
+                  </div>
+                  <div class="col-sm-9">
+                    <p class="text-muted mb-0"><?php echo $result1[10]; ?></p>
+                  </div>
+                </div>
+                <hr/>
+                <div class="row">
+                  <div class="col-sm-3">
+                    <p class="mb-0">Department</p>
+                  </div>
+                  <div class="col-sm-9">
+                    <p class="text-muted mb-0"><?php echo $result1[11]; ?></p>
+                  </div>
+                </div>
+                <hr/>
+                <div class="row">
+                  <div class="col-sm-3">
+                    <p class="mb-0">Experience</p>
+                  </div>
+                  <div class="col-sm-9">
+                    <p class="text-muted mb-0"><?php echo $result1[12]; ?></p>
+                  </div>
+                </div>
+                <hr/>
+                <div class="row">
+                  <div class="col-sm-3">
+                    <p class="mb-0">Skills</p>
+                  </div>
+                  <div class="col-sm-9">
+                    <p class="text-muted mb-0"><?php echo $result1[13]; ?></p>
+                  </div>
+                </div>
+                <hr/>
               </div>
             </div>
           </div>
