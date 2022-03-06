@@ -1,3 +1,4 @@
+<?php include('./dashboard.php');?>
 <?php
 include '../teacherregistration/validation.php';
 ?>
@@ -29,9 +30,13 @@ if (!$db) {
   </head>
   <body>
     <?php
+    $path='../teacherregistration/video/';
 $id = $_SESSION['user']['id'];
-$result = mysqli_query($db, "SELECT `name`,`email`,`password`,`phone`,`address`,`photo`,`degree`,`board`,`institute`,`yearofpassing`,`percentage`,`department`,`experience`,`skills`,`skilldocuments`,`video` FROM teachers where id='$id'");
+$result = mysqli_query($db, "SELECT `name`,`email`,`password`,`phone`,`address`,`photo`,`degree`,`institute`,`department`,`experience`,`skills`,`skilldocuments`,`video` FROM teachers where id='$id'");
 $result1 = mysqli_fetch_row($result);
+ob_start();
+echo $result1[12];
+$videoname = ob_get_clean();
 ?>
     <section style="background-color: #eee">
       <div class="container py-5">
@@ -94,7 +99,7 @@ $result1 = mysqli_fetch_row($result);
                 <hr/>
                 <div class="row">
                   <div class="col-sm-3">
-                    <p class="mb-0">Degree</p>
+                    <p class="mb-0">Qulai</p>
                   </div>
                   <div class="col-sm-9">
                     <p class="text-muted mb-0"><?php echo $result1[6]; ?></p>
@@ -103,7 +108,7 @@ $result1 = mysqli_fetch_row($result);
                 <hr/>
                 <div class="row">
                   <div class="col-sm-3">
-                    <p class="mb-0">Board</p>
+                    <p class="mb-0">Institute</p>
                   </div>
                   <div class="col-sm-9">
                     <p class="text-muted mb-0"><?php echo $result1[7]; ?></p>
@@ -112,7 +117,7 @@ $result1 = mysqli_fetch_row($result);
                 <hr/>
                 <div class="row">
                   <div class="col-sm-3">
-                    <p class="mb-0">Institute</p>
+                    <p class="mb-0">Department</p>
                   </div>
                   <div class="col-sm-9">
                     <p class="text-muted mb-0"><?php echo $result1[8]; ?></p>
@@ -121,7 +126,7 @@ $result1 = mysqli_fetch_row($result);
                 <hr/>
                 <div class="row">
                   <div class="col-sm-3">
-                    <p class="mb-0">Year of passing</p>
+                    <p class="mb-0">Experience</p>
                   </div>
                   <div class="col-sm-9">
                     <p class="text-muted mb-0"><?php echo $result1[9]; ?></p>
@@ -130,37 +135,10 @@ $result1 = mysqli_fetch_row($result);
                 <hr/>
                 <div class="row">
                   <div class="col-sm-3">
-                    <p class="mb-0">Percentage</p>
-                  </div>
-                  <div class="col-sm-9">
-                    <p class="text-muted mb-0"><?php echo $result1[10]; ?></p>
-                  </div>
-                </div>
-                <hr/>
-                <div class="row">
-                  <div class="col-sm-3">
-                    <p class="mb-0">Department</p>
-                  </div>
-                  <div class="col-sm-9">
-                    <p class="text-muted mb-0"><?php echo $result1[11]; ?></p>
-                  </div>
-                </div>
-                <hr/>
-                <div class="row">
-                  <div class="col-sm-3">
-                    <p class="mb-0">Experience</p>
-                  </div>
-                  <div class="col-sm-9">
-                    <p class="text-muted mb-0"><?php echo $result1[12]; ?></p>
-                  </div>
-                </div>
-                <hr/>
-                <div class="row">
-                  <div class="col-sm-3">
                     <p class="mb-0">Skills</p>
                   </div>
                   <div class="col-sm-9">
-                    <p class="text-muted mb-0"><?php echo $result1[13]; ?></p>
+                    <p class="text-muted mb-0"><?php echo $result1[10]; ?></p>
                   </div>
                 </div>
                 <hr/>
@@ -168,6 +146,9 @@ $result1 = mysqli_fetch_row($result);
             </div>
           </div>
         </div>
+        </br>
+        <h2>Video</h2></br>
+        <embed src=<?php echo $path.$videoname ?> width="400px" height="300px" style="margin-left:15px;" />
       </div>
     </section>
   </body>

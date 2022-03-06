@@ -63,6 +63,7 @@
                 multiple
               />
             </div>
+            <a href="" style="text-decoration:none;font-size:18px;margin-left:20px;">Click to add Quiz</a>
             <center><button
               type="submit"
               name="submittopic"

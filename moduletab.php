@@ -1,3 +1,4 @@
+<?php include('./dashboard.php');?>
 <?php 
   error_reporting(E_ERROR | E_WARNING | E_PARSE);
   $course= $_GET['course'];
@@ -39,7 +40,7 @@
   </head>
   <body>
     <div class="container" style="margin-top: 10px; margin-left: 10px">
-      <a href="coursetab.html" style="text-decoration: none">Back to courses</a>
+      <a href="coursetab.php" style="text-decoration: none">Back to courses</a>
       <a href="modulesdisplay.php?course=<?php echo $course ?>" style="text-decoration: none;float:right;">Next to modules</a>
       
       <div class="container col-md-6">

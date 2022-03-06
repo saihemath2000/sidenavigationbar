@@ -61,7 +61,7 @@
         <ul>
           <h3 style="margin-left: 10px; color: white">Instructor</h3>
           <li>
-            <a
+            <a href="dashboard.php" target="iframe_a"
               ><svg
                 xmlns="http://www.w3.org/2000/svg"
                 version="1.1"
@@ -114,7 +114,7 @@
              Edit Profile</a>
           </li>
           <li>
-            <a href="coursetab.html" target="iframe_a"><i class="fas fa-plus"></i>Create course</a>
+            <a href="./coursetab.php" target="iframe_a"><i class="fas fa-plus"></i>Create course</a>
           </li>
           <li>
             <a href="./mycourses.php" target="iframe_a">
@@ -267,7 +267,7 @@
           </li>
         </ul>
       </div>
-        <iframe src="" name="iframe_a" width="100%" height="1000px" title="Iframe Example" style="margin-top:50px;margin-left:300px;"  frameborder="0" allowfullscreen></iframe> 
+        <iframe src="dashboard.php" name="iframe_a" width="100%" height="1000px" title="Iframe Example" style="margin-left:300px;"  frameborder="0" allowfullscreen></iframe> 
     </div>
   </body>
 </html>

@@ -1,10 +1,11 @@
+<?php include('./dashboard.php');?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Create course</title>
     <link
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
@@ -18,7 +19,7 @@
     </style>
 </head>
 <body>
-    <div class="container" style="margin-left:10px;margin-top: 10px;">
+    <div class="container" style="margin-left:10px;margin-top: 50px;">
     <div class="row">
         <div class="col-8">
             <h2>Enter Course Details</h2></br>
@@ -74,6 +75,16 @@
             id="price"
             name="price"
             placeholder="price in rupees"
+          />
+        </div>
+        <div class="form-group col-md-6">
+          <label for="course">Tags</label>
+          <input
+            type="text"
+            class="form-control"
+            id="tags"
+            placeholder="Enter tags for your course"
+            name="tags"
           />
         </div>
         <div class="form-group col-md-6">

@@ -1,3 +1,4 @@
+<?php include('./dashboard.php');?>
 <?php
    $db = mysqli_connect("localhost", "root", "", "course_info");
    if (!$db) {
