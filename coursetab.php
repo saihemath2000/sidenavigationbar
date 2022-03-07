@@ -83,7 +83,7 @@
             type="text"
             class="form-control"
             id="tags"
-            placeholder="Enter tags for your course"
+            placeholder="#html#programming...."
             name="tags"
           />
         </div>

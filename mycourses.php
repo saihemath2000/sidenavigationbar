@@ -37,6 +37,7 @@ if (!$db) {
        <input type="text" class="form-control" id="search"  placeholder="search" onchange="searchcourses()"></br>
     </div>
     <?php
+    $tags=array();
 $path = './courseimages/';
 $g = 0;
 $sql1 = "SELECT * from courseinstructors where instructor='$instructor'";
@@ -49,13 +50,15 @@ if (mysqli_num_rows($result) > 0) {
     // output data of each row
     echo '<div class="card-columns" style="height:400px;">';
     while ($row = mysqli_fetch_assoc($result)) {
+        $mycourse=$row['title'];
         $fortitle=$row['title'];
         $fortitle=str_replace(' ', '', $fortitle);
         $fortitle=strtolower($fortitle);
+        $tags[$fortitle]=$row['tags'];
         echo '<div class="card" name="hello"  id='.$fortitle.' style="width: 25rem;height:20rem;margin-left:10px;">';
         echo '<img class="card-img-top" src=' . $path . $row['image'] . ' style="height:150px;width:150px;margin-top:5px;" alt="course image">';
         echo '<div class="card-body" style="width:300px;"><h5 class="card-title">' . $row['title'] . '</h5><p class="card-text">' . $row['description'] . '</p>
-                <a href="courseinformation.php?course='.$fortitle.'" class="btn btn-primary">Goto Course</a></div></div>';
+                <a href="courseinformation.php?course='.$mycourse.'" class="btn btn-primary">Goto Course</a></div></div>';
         echo '&nbsp;';
     }
     echo '</div>';
@@ -65,45 +68,31 @@ if (mysqli_num_rows($result) > 0) {
 ?>
  <script>
         function searchcourses(){
+            var courses=[];
             let input = document.getElementById('search').value;
             input=input.toLowerCase();
             input=input.split(' ').join('');
-            console.log(input);
-            // let x = document.getElementsByClassName('card-title');
-            // for (i = 0; i < x.length; i++) { 
-            //     if (!x[i].innerHTML.toLowerCase().includes(input)) {
-            //         x[i].style.display="none";
-            //     }
-            //     else {
-            //         let g = document.querySelector('.card-title');
-            //         let f = g.parentNode;
-            //         let m = document.getElementById(input);
-            //         m.style.display="block";
-            //         console.log(m.id);
-            //         // x[i].style.display="alert(x)";                 
-            //     }
-            // }
-            const e = document.getElementsByName('hello');
-            //console.log(e);
-            if(input==""){
-                for(i=0;i<e.length;i++){
-                    e[i].style.display=="block";
-                }
+            input='#'+input;
+            var jstags = <?php echo json_encode($tags); ?>;
+            const entries = Object.entries(jstags);
+            for(i=0;i<entries.length;i++){
+                var temp1=entries[i][0];
+                var temp2=entries[i][1];
+                temp2=temp2.split(' ').join('');
+                // console.log(typeof temp2);
+                if(temp2.indexOf(input)!=-1){
+                    courses.push(temp1);       
+                }                
             }
-            else{
-                for(i=0;i<e.length;i++){
-                    //console.log(e[i].id);
-                    if(e[i].id==input){
-                        e[i].style.display="block";
-            //          console.log(e);
-                    }
-                // else if(e.id==""){
-                
-                // }
-                    else{
-                        e[i].style.display="none";
-              //      console.log(e);
-                    }
+            // console.log(courses);
+
+            const e = document.getElementsByName('hello');
+            for(i=0;i<e.length;i++){
+                if(courses.includes(e[i].id)){
+                    e[i].style.display="block";
+                }
+                else{
+                    e[i].style.display="none";
                 }
             }
         }
