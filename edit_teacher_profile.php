@@ -73,6 +73,7 @@
       if($string==':'){
         $string=$result1[14];
       }
+      $pass = md5($pass);
       $edit = mysqli_query($db,"update teachers set name='$name', email='$email', password='$pass',phone='$phone',address='$address',photo='$photo',degree='$degree',institute='$institute',department='$department',experience='$experience',skills='$skills',skilldocuments='$string',video='$video',created_at='$current_date' where id='$id'");
       
       if(isset($photo)) {

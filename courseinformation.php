@@ -65,21 +65,23 @@ if (!$db) {
         <a class="sticky-nav-tab" style="text-decoration:none;" href="#tab-react">About</a> 
         <a class="sticky-nav-tab" style="text-decoration:none;" href="#tab-angular">Syllabus</a> 
         <a class="sticky-nav-tab" style="text-decoration:none;" href="#tab-cssscript">Teachers</a> 
-        <span class="sticky-nav-tab-slider"></span> 
+        <span class="sticky-nav-tab-slider"></span>
       </div>
     </section>
     <main class="spa-main">
+      <div class="tab-content">
       <section class="spa-slide" style="height:50vh;" id="tab-react">
         <h1 style="margin-right:630px;">
           About this Course
         </h1><br>
         <p class="aboutcourse"><?php echo $row[8]; ?></p>         
       </section>
-      <section class="spa-slide" id="tab-angular" style="height:200vh;">
+      <section class="spa-slide" id="tab-angular" style="height:700vh;">
         <h1 style="margin-right:820px;">Syllabus</h1><br>
         <?php include('./modulesdisplayincourseinformation.php');?>
       </section>
       <section class="spa-slide" id="tab-cssscript" style="height:50vh;">Start Demo 3</section>
+      </div> 
     </main>
 
     <script  src="./script.js"></script>
