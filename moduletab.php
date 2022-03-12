@@ -1,9 +1,8 @@
 <?php include('./dashboard.php');?>
 <?php 
   error_reporting(E_ERROR | E_WARNING | E_PARSE);
-  $course= $_GET['course'];
-  if(isset($course)){
-    //
+  if(isset($_GET['course'])){
+    $course= $_GET['course'];
   }
   else{
     $db = mysqli_connect("localhost", "root", "", "course_info");
@@ -17,6 +16,7 @@
       echo mysqli_error($db);
     }
     $course= $res1[0];
+    // echo $course;
   }
 ?>
 <!DOCTYPE html>

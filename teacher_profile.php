@@ -99,7 +99,7 @@ $videoname = ob_get_clean();
                 <hr/>
                 <div class="row">
                   <div class="col-sm-3">
-                    <p class="mb-0">Qulai</p>
+                    <p class="mb-0">Qualification</p>
                   </div>
                   <div class="col-sm-9">
                     <p class="text-muted mb-0"><?php echo $result1[6]; ?></p>
@@ -148,7 +148,12 @@ $videoname = ob_get_clean();
         </div>
         </br>
         <h2>Video</h2></br>
-        <embed src=<?php echo $path.$videoname ?> width="400px" height="300px" style="margin-left:15px;" />
+        <embed src=<?php
+            if($videoname=='')
+              echo 'no video uploaded';
+            else  
+              echo $path.$videoname; 
+        ?> width="400px" height="300px" style="margin-left:15px;" />
       </div>
     </section>
   </body>

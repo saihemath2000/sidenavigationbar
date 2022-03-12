@@ -50,7 +50,7 @@ if (!$db) {
         echo "<script>console.log('$providedskills');</script>";
         echo "<script>console.log('$temp');</script>";
         $title = $_POST['coursetitle'];
-        if (strpos($providedskills, $temp) == false) {
+        if ((strpos($providedskills, $temp)+1) == false) {
             echo "<script>$(document).ready(function(){ $('#mymodal').modal('show'); });</script>";
         } else {
             $category = $_POST['category'];
@@ -133,7 +133,7 @@ if (!$db) {
                   <!-- Modal body -->
                   <div class="modal-body">
                     <button type="button" class="btn btn-secondary" onclick="window.location.href='./edit_teacher_profile.php'">YES</button>
-                    <button type="button" class="btn btn-success" onclick="window.location.href='./coursetab.html'">NO</button>
+                    <button type="button" class="btn btn-success" onclick="window.location.href='./coursetab.php'">NO</button>
                   </div>
                 </div>
               </div>
