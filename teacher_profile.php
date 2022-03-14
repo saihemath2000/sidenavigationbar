@@ -49,7 +49,8 @@ $videoname = ob_get_clean();
                   src="<?php echo '../teacherregistration/profilephotos/' . $result1[5]; ?>"
                   alt="avatar"
                   class="rounded-circle img-fluid"
-                  style="width: 300px"
+                  style="width: 200px;height:200px"
+                  
                 />
                 <h5 class="my-3"><?php echo $result1[0]; ?></h5>
                 <p class="text-muted mb-1">Instructor</p>
@@ -149,7 +150,7 @@ $videoname = ob_get_clean();
         </br>
         <h2>Video</h2></br>
         <embed src=<?php
-            if($videoname=='')
+            if(isset($videoname))
               echo 'no video uploaded';
             else  
               echo $path.$videoname; 

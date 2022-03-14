@@ -16,7 +16,6 @@
       echo mysqli_error($db);
     }
     $course= $res1[0];
-    // echo $course;
   }
 ?>
 <!DOCTYPE html>

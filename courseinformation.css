@@ -128,6 +128,10 @@ a { text-decoration: none; }
   top: 0;
 }
 
+.sticky-nav-tabs-container--top-third {
+  position: fixed;
+  top: 0;
+}
 .sticky-nav-tab {
   display: -webkit-box;
   display: -ms-flexbox;

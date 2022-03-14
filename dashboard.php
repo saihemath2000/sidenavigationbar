@@ -74,19 +74,15 @@
   <body>
     <div class="banner">
       <div class="banner__content">
-        <!-- <button><img src="./bannerimage/logo.png" width="70" height="70"/></button> -->
-        <!-- <a class="button parallelogram" href="#" style="text-align: center">
-          <span class="skew-fix">OLS</span>
-        </a> -->
-        <a href="#" id="abc">
+        <!-- <a href="#" id="abc">
           <span></span>
           <span></span>
           <span></span>
           <span></span>
           OLS
-        </a>
+        </a> -->
          <div class="banner__text">
-          <strong>ONLINE LEARNING SYSTEM</strong>
+          <strong style="font-family:'Josefin Sans', sans-serif">ONLINE LEARNING SYSTEM</strong>
         </div>
       </div>
     </div>

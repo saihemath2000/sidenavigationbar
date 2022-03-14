@@ -1,4 +1,5 @@
-<!-- hello -->
+<?php
+error_reporting(E_ERROR | E_WARNING | E_PARSE);?> 
 <?php include './dashboard.php';?>
 <?php
 session_start();
@@ -50,7 +51,7 @@ if (!$db) {
       $row = mysqli_fetch_row($result);
     ?>
     <div style="display:flex;">
-        <h4 style="text-transform:uppercase;margin-top: 50px;margin-left:50px;"><?php echo $course; ?></h4>
+        <h3 style="text-transform:uppercase;margin-top: 50px;margin-left:50px;"><?php echo $course; ?></h3>
         <img src="<?php echo $path.$row[9]; ?>" alt="courseimage" width="150" height="150" style="margin-left:auto;order:2;margin-right:50px;margin-top:60px;"/>
     </div></br></br>
     <div class="sideinfo" style="display:flex;">
@@ -77,11 +78,13 @@ if (!$db) {
         </h1><br>
         <p class="aboutcourse"><?php echo $row[8]; ?></p>         
       </section>
-      <section class="spa-slide" id="tab-angular" style="height:700vh;">
+      <section class="spa-slide" id="tab-angular" style="height:450vh;">
         <h1 style="margin-right:820px;">Syllabus</h1><br>
         <?php include('./modulesdisplayincourseinformation.php');?>
       </section>
-      <section class="spa-slide" id="tab-cssscript" style="height:50vh;">Start Demo 3</section>
+      <section class="spa-slide" id="tab-cssscript" style="height:50vh;">
+        <?php include('./teacherprofileincourseinformation.php');?>
+      </section>
       </div> 
     </main>
 

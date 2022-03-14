@@ -59,7 +59,7 @@
 					<h1 style="color:white;font-size:28px;margin-left:10px;"><?php echo $_SESSION['user']['name']; ?></h1>
       <?php endif ?></br>
         <ul>
-          <h3 style="margin-left: 10px; color: white">Instructor</h3>
+          <h3 style="margin-left: 10px; color: white">Teacher</h3>
           <li>
             <a href="dashboard.php" target="iframe_a"
               ><svg
