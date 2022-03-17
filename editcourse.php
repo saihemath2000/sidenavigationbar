@@ -57,8 +57,9 @@
            echo '<tr>';
            echo '<td>'.$i.'</td>';
            echo '<td style="font-family:"Josefin Sans",sans-serif;"><a contenteditable="true" id="'.$row[0].'" href="./editmodule.php?coursename='.$row[0].'">'.$row[0].'</a></td>';
-          //  echo '<td id="edit" onclick="saveEdits('.$row[0].')"><i style="font-size:26px" class="fas">&#xf044;</i></td>';
            echo '<td id="save" "><a onclick="saveEdits('."'$course'".');"><i class="fa fa-save"></i></a></td>';
+           echo '<td id="delete" "><a onclick="deletecourse('."'$course'".');"><i class="fa fa-trash"></i></a></td>';
+           echo '<td id="gotomodule" "><a href="editmodule.php?course='.$course.'"><i class="fa fa-arrow-right"></i></a></td>';           
            echo '</tr>';
           }
       ?>
@@ -71,9 +72,13 @@
       localStorage[course] = userVersion;
       document.location = "saveeditcourse.php?course="+course+"&text="+userVersion;  
     }
+    function deletecourse(course){
+      var editElem = document.getElementById(course);
+      // var userVersion = editElem.innerHTML
+      localStorage.removeItem(course);
+      document.location = "deletecourse.php?course="+course;  
+    }
     function checkEdits(){
-      // if(localStorage.userEdits!=null)
-      //   document.getElementById('java').innerHTML = localStorage.userEdits;
       var values = [],
       keys = Object.keys(localStorage),
       i = keys.length;

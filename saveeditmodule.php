@@ -1,27 +1,26 @@
 <?php 
 $course = $_GET['course'];
+$module = $_GET['module'];
 $text = $_GET['text'];
 $db = mysqli_connect("localhost", "root", "", "course_info");
 if (!$db) {
     die('connection failed:' . mysqli_connect_error());
 }
 else{
-    $sql1 = "UPDATE courseinstructors set title='$text' where title='$course'";
-    $sql2 = "UPDATE module set coursename='$text' where coursename='$course'";
-    $sql3 = "UPDATE topic set coursename='$text' where coursename='$course'";
-    $result1 = mysqli_query($db,$sql1);
+    $sql2 = "UPDATE module set title='$text' where coursename='$course' and title='$module'";
+    $sql3 = "UPDATE topic set sectionname='$text' where coursename='$course' and sectionname='$module'";
     $result2 = mysqli_query($db,$sql2);
     $result3 = mysqli_query($db,$sql3);
-    if($result1){
-        echo "<script>alert('course updated successfully');";
+    if($result2){
+        echo "<script>alert('module updated successfully');";
         // header('location:editcourse.php');
-        echo 'window.location.href="editcourse.php"';
+        echo 'window.location.href="editmodule.php?course='.$course.'"';
         echo '</script>';
     }
     else{
         echo mysqli_error($db);
     }
-    if($result2 and $result3){
+    if($result3){
         //
     }
     else{
