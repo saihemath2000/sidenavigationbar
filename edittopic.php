@@ -43,7 +43,7 @@ else{
   <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
 </head>
 <body>
- <a href='editmodule.php?course="$course"&module="$module"' style="margin-top:25px;">Back to Modules</a>   
+ <a href='editmodule.php?course=<?php echo $course; ?>' style="margin-top:25px;">Back to Modules</a>   
 <table>
     <tr>
       <th></th>
