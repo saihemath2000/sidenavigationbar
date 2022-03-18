@@ -1,3 +1,4 @@
+<?php include('./dashboard.php');?>
 <?php 
  $course = $_GET['course'];
  $module = $_GET['module'];
