@@ -23,7 +23,7 @@ else{
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit course details</title>
+    <title>Edit topic details</title>
     <link
       rel="stylesheet"
       href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
@@ -38,34 +38,35 @@ else{
 </head>
 <body>
 <?php  
-  if(isset($_POST['save'])){
-   $title = $_POST['coursetitle'];
-   $category = $_POST['category'];
-   $startdate = $_POST['startdate'];
-   $enddate = $_POST['enddate'];
-   $price = $_POST['price'];
-   $tags = $_POST['tags'];
-   $description = $_POST['description'];
-   $courseimage = $_FILES['courseimage']['name'];
-   $tmp_courseimage = $_FILES['courseimage']['tmp_name'];
-//    $current_date = date("Y-m-d H:i:s");
-   if($courseimage){}
+  if(isset($_POST['submittopic'])){
+   $title = $_POST['topictitle'];
+   $topicvideo = $_FILES['topicvideo']['name'];
+   $tmp_topicvideo = $_FILES['topicvideo']['tmp_name'];
+   $totalfiles = count($_FILES['file']['name']);
+   if($topicvideo){}
    else{
-     $courseimage=$result1[9]; 
+       $topicvideo= $result1[4];
    }
-   $edit = mysqli_query($db,"update courseinstructors set title='$title',category='$category',start_date='$startdate',end_date='$enddate',price='$price',tags='$tags',description='$description',image='$courseimage' where title='$course'");
-   
-   if(isset($courseimage)) {
-     $folder= './courseimages/';
-     if (!empty($courseimage)){
-        if (move_uploaded_file($tmp_courseimage, $folder.$courseimage)) {
-           //echo 'Uploaded!';
+   for ($i = 0; $i < $totalfiles; $i++) {
+    $filename = $_FILES['file']['name'][$i];
+    $string=$string.':'.$filename; 
+    if (move_uploaded_file($_FILES["file"]["tmp_name"][$i], 'topicdocuments/' . $filename)) {
+        //echo 'uploaded;
+    }
+   } 
+   $k =$result1[5];
+   $temp =$k.':'.$string;  
+   if (isset($topicvideo)) {
+        if (move_uploaded_file($tmp_topicvideo, './topicvideos/' . $topicvideo)) {
+        // echo 'uploaded';
         }
-     }
-   }
+    } else {
+         echo 'f**k';
+    }
+   $edit = mysqli_query($db,"UPDATE topic set title='$title',video='$topicvideo',document='$temp' where coursename='$course' and sectionname='$module' and title='$topic'");
    if($edit){ 
        mysqli_close($db);
-       header("location:editcourse.php"); 
+       header("location:edittopic.php?course=$course& module=$module"); 
        exit;
    }
    else{
@@ -86,7 +87,7 @@ else{
     <div class="row">
       <div class="col-md-8 offset-md-2">
         <div class="login-form">
-          <form style="margin-top: 10px; margin-left: 10px"  enctype='multipart/form-data' method="POST" action="./topiccreationdb.php?course=<?php echo $coursename?>&module=<?php echo $module?>">
+          <form style="margin-top: 10px; margin-left: 10px"  enctype='multipart/form-data' method="POST">
             <div class="form-group col-md-8">
               <label for="course">Topic</label>
               <input
@@ -95,6 +96,7 @@ else{
                 id="course1"
                 name="topictitle"
                 placeholder="Enter topic"
+                value="<?php echo $result1[3];?>"
               />
             </div>
             <div class="form-group col">

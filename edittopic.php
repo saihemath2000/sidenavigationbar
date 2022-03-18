@@ -6,7 +6,7 @@ if (!$db) {
     die('connection failed:' . mysqli_connect_error());
 }
 else{
-    $sql="SELECT distinct title from topic where coursename='$course' and sectionname='$module'";
+    $sql="SELECT title from topic where coursename='$course' and sectionname='$module'";
     $result = mysqli_query($db,$sql);
     if(!$result){
         echo mysqli_error($db);
