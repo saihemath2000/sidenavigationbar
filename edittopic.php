@@ -59,15 +59,15 @@ else{
            echo '<tr>';
            echo '<td>'.$i.'</td>';
            echo '<td style="font-family:"Josefin Sans",sans-serif;"><a id="'.$row[0].'" href="edittopicseparate.php?module='.$module.'&course='.$course.'&topic='.$topic.'">'.$row[0].'</a></td>';
-           echo '<td id="delete" "><a onclick="deletemodule('."'$module'".','."'$course'".','."'$topic'".');"><i class="fa fa-trash"></i></a></td>';
+           echo '<td id="delete"><a onclick="deletetopic('."'$module'".','."'$course'".','."'$topic'".');"><i class="fa fa-trash"></i></a></td>';
            echo '</tr>';
           }
       ?>
     </tr>
   </table>
   <script>
-    function deletemodule(module,course,topic){
-      document.location = "deletemodule.php?course="+course+"&module="+module+"&topic="+topic;  
+    function deletetopic(module,course,topic){
+      document.location = "deletetopic.php?course="+course+"&module="+module+"&topic="+topic;  
     }
   </script>
 </body>
