@@ -42,8 +42,10 @@ else{
   <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
 </head>
 <body onload="checkEdits()">
- <a href="editcourse.php" style="margin-top:25px;">Back to Courses</a>   
-<table>
+ <a href="editcourse.php" style="margin-top:25px;">Back to Courses</a></br>  
+ <a href="addmoduleseparate.php?course=<?php echo $course;?>"><svg style="margin-left:280px;margin-top:0px;"xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16" id="sectionid"><path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/></svg>Add Modules</a>
+  
+ <table>
     <tr>
       <th></th>
       <th></th>

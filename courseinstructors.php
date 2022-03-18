@@ -90,6 +90,7 @@ if (!$db) {
             }
 
             $m = $res3['max'] + 1;
+            $m=floor($m);
             $sql3 = mysqli_query($db,
             "INSERT INTO topic (id,coursename,sectionname,title,video,document) VALUES ('$m','$title','','','','')");
             // $result3 = mysqli_query($db, $sql3);
