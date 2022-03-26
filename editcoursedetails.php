@@ -46,12 +46,18 @@ else{
    $description = $_POST['description'];
    $courseimage = $_FILES['courseimage']['name'];
    $tmp_courseimage = $_FILES['courseimage']['tmp_name'];
+   $coursevideo = $_FILES['coursevideo']['name'];
+   $tmp_video = $_FILES['coursevideo']['tmp_name'];
 //    $current_date = date("Y-m-d H:i:s");
    if($courseimage){}
    else{
      $courseimage=$result1[9]; 
    }
-   $edit = mysqli_query($db,"update courseinstructors set title='$title',category='$category',start_date='$startdate',end_date='$enddate',price='$price',tags='$tags',description='$description',image='$courseimage' where title='$course'");
+   if($coursevideo){}
+   else{
+     $coursevideo=$result1[10]; 
+   }
+   $edit = mysqli_query($db,"update courseinstructors set title='$title',category='$category',start_date='$startdate',end_date='$enddate',price='$price',tags='$tags',description='$description',image='$courseimage',video='$coursevideo' where title='$course'");
    
    if(isset($courseimage)) {
      $folder= './courseimages/';
@@ -61,6 +67,14 @@ else{
         }
      }
    }
+   if(isset($coursevideo)) {
+    $folder= './coursevideo/';
+    if (!empty($coursevideo)){
+       if (move_uploaded_file($tmp_video, $folder.$coursevideo)) {
+          //echo 'Uploaded!';
+       }
+    }
+  }
    if($edit){ 
        mysqli_close($db);
        header("location:editcourse.php"); 
@@ -167,6 +181,15 @@ else{
             class="form-control-file"
             id="exampleFormControlFile1"
             name="courseimage"
+          />
+        </div>
+        <div class="form-group col-md-6">
+          <label for="exampleFormControlFile1">Video for course</label>
+          <input
+            type="file"
+            class="form-control-file"
+            id="exampleFormControlFile1"
+            name="coursevideo"
           />
         </div>
         <button

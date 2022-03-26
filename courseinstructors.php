@@ -61,8 +61,15 @@ if (!$db) {
             $description = $_POST['description'];
             $imagename = $_FILES['courseimage']['name'];
             $tmp_name = $_FILES['courseimage']['tmp_name'];
+            $videoname= $_FILES['coursevideo']['name'];
+            $tmp_video = $_FILES['coursevideo']['tmp_name'];
             if (isset($imagename)) {
                 if (move_uploaded_file($tmp_name, 'courseimages/' . $imagename)) {
+                    // echo 'uploaded';
+                }
+            }
+            if (isset($videoname)) {
+                if (move_uploaded_file($tmp_video, 'coursevideo/' . $videoname)) {
                     // echo 'uploaded';
                 }
             }
@@ -70,9 +77,9 @@ if (!$db) {
             $res = mysqli_fetch_array($sql);
             $i = $res['max'] + 1;
             $sql1 = mysqli_query($db,"INSERT INTO courseinstructors 
-            (id,instructor,title,category,`start_date`,end_date,price,tags,`description`,`image`) 
+            (id,instructor,title,category,`start_date`,end_date,price,tags,`description`,`image`,video) 
             VALUES 
-            ('$i','$instructor','$title','$category','$startdate','$enddate','$price','$tags','$description','$imagename')")or die(mysqli_error($db));
+            ('$i','$instructor','$title','$category','$startdate','$enddate','$price','$tags','$description','$imagename',$videoname)")or die(mysqli_error($db));
             $sql3 = mysqli_query($db, "SELECT MAX(id) AS max FROM module;");
             $res1 = mysqli_fetch_array($sql3);
             if (!$res1) {
