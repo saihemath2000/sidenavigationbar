@@ -25,6 +25,13 @@ else{
            margin-left:100px;   
            font-size:23px;
         }
+        a{
+            text-decoration:none;
+            color:black;
+        }
+        a:hover{
+            color:blue;
+        }
     </style>
 </head>
 <body>
@@ -39,7 +46,8 @@ else{
                 $result1=mysqli_query($db,$sql1);
                 if(mysqli_num_rows($result1)>0){
                     while($row1=mysqli_fetch_assoc($result1)){
-                       echo '<li class="topic">'.$row1['title'].'</li>';      
+                       $topic=$row1['title']; 
+                       echo '<a style="text-decoration:none;" href="topicdetailsincourseinformation.php?course='.$course.'&module='.$module.'&topic='.$topic.'"><li class="topic">'.$row1['title'].'</li></a>';      
                     }
                 }
                 echo '</ol>';

@@ -57,7 +57,7 @@ if (mysqli_num_rows($result) > 0) {
         $tags[$fortitle]=$row['tags'];
         echo '<div class="card" name="hello"  id='.$fortitle.' style="width: 25rem;height:20rem;margin-left:10px;">';
         echo '<img class="card-img-top" src=' . $path . $row['image'] . ' style="height:150px;width:150px;margin-top:5px;" alt="course image">';
-        echo '<div class="card-body" style="width:300px;"><h5 class="card-title">' . $row['title'] . '</h5><p class="card-text">' . $row['description'] . '</p>
+        echo '<div class="card-body" style="width:350px;"><h5 class="card-title">' . $row['title'] . '</h5><p class="card-text">' . $row['description'] . '</p>
                 <a href="courseinformation.php?course='.$mycourse.'" class="btn btn-primary">Goto Course</a></div></div>';
         echo '&nbsp;';
     }
