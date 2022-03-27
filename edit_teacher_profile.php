@@ -77,11 +77,15 @@
     }
     //Use $files like you would use $_FILES['browser'] -- It is as though all files came from one browser button!
     $fileIterator = 0;
-     echo count($files['name']);
+    // echo count($files['name']);
     while($fileIterator < count($files['name'])) {
+      if(strpos($string,$files['name'][$fileIterator]) !== false){
+          //  echo "Word Found!";
+          $fileIterator++;
+      } else{
         $string = $string.':'.$files['name'][$fileIterator];
-        // echo $files['name'][$fileIterator]."<br/>";
         $fileIterator++;
+      }
     }
       if($photo){}
       else{
@@ -115,7 +119,7 @@
       }
       if($edit){ 
           mysqli_close($db);
-          // header("location:teacher_profile.php"); 
+           header("location:teacher_profile.php"); 
           exit;
       }
       else{
