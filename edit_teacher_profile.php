@@ -294,7 +294,7 @@
                 .attr("name", "skilldocuments"+numOfInputs+"[]")
                 .insertAfter("#skilldocuments"+(numOfInputs-1));
     
-            $("<br/>").insertBefore("#skilldocuments"+numOfInputs);
+            // $("<br/>").insertBefore("#skilldocuments"+numOfInputs);
             $('#skilldocuments'+(numOfInputs-1)).hide();
         });
     });
