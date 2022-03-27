@@ -20,15 +20,37 @@ if (isset($_POST['submittopic'])) {
     $topic = $_POST['topictitle'];
     $topicvideo = $_FILES['topicvideo']['name'];
     $tmp_video = $_FILES['topicvideo']['tmp_name'];
-    // $tmp_name = $_FILES['file']['tmp_name'];
-    $totalfiles = count($_FILES['file']['name']);
+    // $totalfiles = count($_FILES['file']['name']);
     $string='';
-    for ($i = 0; $i < $totalfiles; $i++) {
-        $filename = $_FILES['file']['name'][$i];
-        $string=$string.':'.$filename; 
-        if (move_uploaded_file($_FILES["file"]["tmp_name"][$i], 'topicdocuments/' . $filename)) {
-            //echo 'uploaded;
+    $files = array();
+    $files = $_FILES['files0'];
+    foreach($_FILES['files0']['name'] as $m=>$n){
+        if (move_uploaded_file($_FILES['files0']['tmp_name'][$m],'topicdocuments/' . $n)) {
+            //  echo 'uploaded';
+        } 
+    }
+    $browserIterator = 1;
+    while(isset($_FILES['files'.$browserIterator])) {
+        //Files have same attribute structure, so grab each attribute and append data for each attribute from each file
+        foreach($_FILES['files'.$browserIterator] as $attr => $values) {//get each attribute
+            foreach($_FILES['files'.$browserIterator][$attr] as $fileValue){//get each value from attribute
+                $files[$attr][] = $fileValue;//append value
+            }
         }
+        foreach($_FILES['files'.$browserIterator]['name'] as $m=>$n){
+            if (move_uploaded_file($_FILES['files'.$browserIterator]['tmp_name'][$m],'topicdocuments/' . $n)) {
+                //  echo $browserIterator;
+            } 
+        }
+        $browserIterator++;
+    }
+    //Use $files like you would use $_FILES['browser'] -- It is as though all files came from one browser button!
+    $fileIterator = 0;
+    // echo count($files['name']);
+    while($fileIterator < count($files['name'])) {
+        $string = $string.':'.$files['name'][$fileIterator];
+        // echo $files['name'][$fileIterator]."<br/>";
+        $fileIterator++;
     }
     if (isset($topicvideo)) {
         if (move_uploaded_file($tmp_video, './topicvideos/' . $topicvideo)) {
