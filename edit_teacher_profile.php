@@ -15,6 +15,7 @@
       integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
       crossorigin="anonymous"
     />
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>    
     <style>
         body{
             font-size:20px;
@@ -46,32 +47,52 @@
       $department = $_POST['department'];
       $experience = $_POST['experience'];
       $skills = $_POST['skills'];
-      $skilldocuments = $_FILES['skilldocuments']['name'];
-      $tmp_skilldocuments = $_FILES['skilldocuments']['tmp_name'];
       $photo = $_FILES['newphoto']['name'];
 	    $tmp_photo = $_FILES['newphoto']['tmp_name'];
       $video = $_FILES['newvideo']['name'];
 	    $tmp_video = $_FILES['newvideo']['tmp_name'];
-      $string='';
+      $string=$result1[11];
       $current_date = date("Y-m-d H:i:s");
-      $total_files = count($_FILES['skilldocuments']['name']);
-      for ($i = 0; $i < $total_files; $i++) {
-        $filename = $_FILES['skilldocuments']['name'][$i];
-        $string=$string.':'.$filename; 
-        if (move_uploaded_file($_FILES["skilldocuments"]["tmp_name"][$i], '../teacherregistration/skilldocuments/' . $filename)) {
-            //echo 'uploaded;
-        }
+      $files = array();
+      $files = $_FILES['skilldocuments0'];
+      foreach($_FILES['skilldocuments0']['name'] as $m=>$n){
+        if (move_uploaded_file($_FILES['skilldocuments0']['tmp_name'][$m],'../teacherregistration/skilldocuments/' . $n)) {
+            //  echo 'uploaded';
+        } 
       }
+      $browserIterator = 1;
+      while(isset($_FILES['skilldocuments'.$browserIterator])) {
+          //Files have same attribute structure, so grab each attribute and append data for each attribute from each file
+          foreach($_FILES['skilldocuments'.$browserIterator] as $attr => $values) {//get each attribute
+            foreach($_FILES['skilldocuments'.$browserIterator][$attr] as $fileValue){//get each value from attribute
+                $files[$attr][] = $fileValue;//append value
+            }
+        }
+        foreach($_FILES['skilldocuments'.$browserIterator]['name'] as $m=>$n){
+            if (move_uploaded_file($_FILES['skilldocuments'.$browserIterator]['tmp_name'][$m],'../teacherregistration/skilldocuments/' . $n)) {
+                //  echo $browserIterator;
+            } 
+        }
+        $browserIterator++;
+    }
+    //Use $files like you would use $_FILES['browser'] -- It is as though all files came from one browser button!
+    $fileIterator = 0;
+     echo count($files['name']);
+    while($fileIterator < count($files['name'])) {
+        $string = $string.':'.$files['name'][$fileIterator];
+        // echo $files['name'][$fileIterator]."<br/>";
+        $fileIterator++;
+    }
       if($photo){}
       else{
         $photo=$result1[5]; 
       }
       if($video){}
       else{
-        $video= $result1[15];
+        $video= $result1[12];
       }
       if($string==':'){
-        $string=$result1[14];
+        $string=$result1[11];
       }
       $pass = md5($pass);
       $edit = mysqli_query($db,"update teachers set name='$name', email='$email', password='$pass',phone='$phone',address='$address',photo='$photo',degree='$degree',institute='$institute',department='$department',experience='$experience',skills='$skills',skilldocuments='$string',video='$video',created_at='$current_date' where id='$id'");
@@ -94,7 +115,7 @@
       }
       if($edit){ 
           mysqli_close($db);
-          header("location:teacher_profile.php"); 
+          // header("location:teacher_profile.php"); 
           exit;
       }
       else{
@@ -237,21 +258,42 @@
            />
         </div> 
         <div class="form-group col-mmd-6">
-          <label style="margin-left:20px;">Choose new Skill Documents</label>
+          <label style="margin-left:17px;">Choose new Skill Documents</label>
           <input
             type="file"
             class="form-control-file"
-            id="skilldocuments"
-            name="skilldocuments[]"
-            style="margin-left:20px;"
+            id="skilldocuments0"
+            name="skilldocuments0[]"
+            style="margin-left:17px;"
             value="<?php echo $result1[14]; ?>"
             multiple
           />
         </div>
+        <span style="font-size: 10pt;margin-left:20px;">Click "+" for more files
+            <a><i id="more_files" class='fa fa-plus'></i></a></span>
+            <br><br>
         <button type="submit" name='save' class="btn btn-success" style="margin-left: 17px">
           Save Changes
         </button>
       </form>
     </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js" ></script>
+    <script type="text/javascript">   
+    $(document).ready(function() {
+        $(document).on('click','#more_files', function() {
+            var numOfInputs = 1;
+            while($('#skilldocuments'+numOfInputs).length) { numOfInputs++; }//once this loop breaks, numOfInputs is greater than the # of browse buttons
+    
+            $("<input type='file' multiple/>")
+                .attr("style","font-size:20px;margin-left:17px;")
+                .attr("id", "skilldocuments"+numOfInputs)
+                .attr("name", "skilldocuments"+numOfInputs+"[]")
+                .insertAfter("#skilldocuments"+(numOfInputs-1));
+    
+            $("<br/>").insertBefore("#skilldocuments"+numOfInputs);
+            $('#skilldocuments'+(numOfInputs-1)).hide();
+        });
+    });
+    </script>
   </body>
 </html>
