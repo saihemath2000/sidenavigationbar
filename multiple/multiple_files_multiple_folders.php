@@ -54,6 +54,7 @@ if(isset($_POST['submit']) && !empty($_FILES)) {
                 .insertAfter("#files"+(numOfInputs-1));
     
             $("<br/>").insertBefore("#files"+numOfInputs);
+            $('#files'+(numOfInputs-1)).hide();
         });
     });
     </script>
