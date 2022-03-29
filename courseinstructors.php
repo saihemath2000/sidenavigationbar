@@ -79,7 +79,7 @@ if (!$db) {
             $sql1 = mysqli_query($db,"INSERT INTO courseinstructors 
             (id,instructor,title,category,`start_date`,end_date,price,tags,`description`,`image`,video) 
             VALUES 
-            ('$i','$instructor','$title','$category','$startdate','$enddate','$price','$tags','$description','$imagename',$videoname)")or die(mysqli_error($db));
+            ('$i','$instructor','$title','$category','$startdate','$enddate','$price','$tags','$description','$imagename','$videoname')")or die(mysqli_error($db));
             $sql3 = mysqli_query($db, "SELECT MAX(id) AS max FROM module;");
             $res1 = mysqli_fetch_array($sql3);
             if (!$res1) {
