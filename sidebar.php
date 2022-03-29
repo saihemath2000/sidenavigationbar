@@ -16,41 +16,7 @@
     <link rel="stylesheet" href="styles.css" />
     <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
     <style>
-      /* .menu-nav {
-       display: flex;
-       justify-content: space-between;
-     }
-     .three-dots:after {
-       cursor: pointer;
-       color: white;
-       content: '\2807';
-       font-size: 20px;
-       padding: 0 5px;
-       margin-left:260px;
-     }
-     .dropdown {
-        position: absolute;
-        right: 10px;
-        background-color: white;
-        display: block;
-        outline: none;
-        opacity: 0;
-        z-index: -1;
-        max-height: 0;
-        transition: opacity 0.1s; z-index:0.1s; max-height: 5s;
-      }
-      
-      .dropdown-container:focus {
-        outline: none;
-      }
-      
-      .dropdown-container:focus .dropdown {
-        opacity: 1;
-        z-index: 100;
-        max-height: 100vh;
-        transition: opacity 0.2s;z-index:0.2s;max-height: 0.2s;
-      } */
-    </style>
+         </style>
   </head>
   <body>
     <div class="wrapper">
